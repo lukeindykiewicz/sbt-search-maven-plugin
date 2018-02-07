@@ -1,6 +1,6 @@
 # sbt-search-maven-plugin
 
-[![Build Status](https://travis-ci.org/blstream/sbt-search-maven-plugin.svg?branch=master)](https://travis-ci.org/blstream/sbt-search-maven-plugin)
+[![Build Status](https://travis-ci.org/lukeindykiewicz/sbt-search-maven-plugin.svg?branch=master)](https://travis-ci.org/lukeindykiewicz/sbt-search-maven-plugin)
 
 Plugin to search maven artifacts. It uses [search.maven.org](http://search.maven.org/) for querying.
 
