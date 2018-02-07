@@ -6,7 +6,7 @@ description := "Sbt plugin to search with search.maven.org"
 
 licenses += ("MIT", url("https://opensource.org/licenses/MIT"))
 
-version := "0.2.0-SNAPSHOT"
+version := "0.2.0"
 
 crossSbtVersions := List("0.13.16", "1.1.0")
 
