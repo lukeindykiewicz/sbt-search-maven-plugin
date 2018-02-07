@@ -6,18 +6,33 @@ description := "Sbt plugin to search with search.maven.org"
 
 licenses += ("MIT", url("https://opensource.org/licenses/MIT"))
 
-version := "0.1.2"
+version := "0.2.0"
 
-scalaVersion := "2.10.6"
+crossSbtVersions := List("0.13.16", "1.1.0")
+
+scalaVersion := {
+  (sbtBinaryVersion in pluginCrossBuild).value match {
+    case "0.13" => "2.10.6"
+    case _      => "2.12.4"
+  }
+}
 
 sbtPlugin := true
 
 scriptedSettings
 
-scriptedLaunchOpts <+= version apply { v => "-Dproject.version="+v }
+scriptedLaunchOpts += ("-Dplugin.version=" + version.value)
 
-libraryDependencies ++= Seq(
-  "net.liftweb" %% "lift-json"    % "2.6.2",
-  "org.specs2"  %% "specs2-core"  % "3.7"  % "test")
+libraryDependencies ++= {
+  val liftJsonCrossVersion =
+    (sbtBinaryVersion in pluginCrossBuild).value match {
+      case "0.13" =>  "2.6.2"
+      case _      =>  "3.2.0"
+    }
+
+  Seq(
+    "net.liftweb" %% "lift-json" % liftJsonCrossVersion,
+    "org.specs2"  %% "specs2-core" % "3.9.4" % "test")
+}
 
 scalariformSettings
